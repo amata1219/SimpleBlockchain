@@ -7,8 +7,8 @@ import java.util.Map;
 
 public record MapJson(Pair... pairs) {
     public String toJson() {
-        Map<String, String> values = new HashMap<>();
-        for (Pair pair : pairs) values.put(pair.key(), pair.value().toString());
+        Map<String, Object> values = new HashMap<>();
+        for (Pair pair : pairs) values.put(pair.key(), pair.value());
 
         Gson gson = new Gson();
         return gson.toJson(values);

@@ -28,9 +28,13 @@ public class Blockchain {
     }
 
     //return the index of the block containing this transaction
-    public int newTransaction(String sender, String recipient, int amount) {
-        currentTransactions.add(new Transaction(sender, recipient, amount));
+    public int newTransaction(Transaction transaction) {
+        currentTransactions.add(transaction);
         return lastBlock().index() + 1;
+    }
+
+    public int newTransaction(String sender, String recipient, int amount) {
+        return newTransaction(new Transaction(sender, recipient, amount));
     }
 
 }
